@@ -72,6 +72,9 @@ check_spacy <- function(which_python = NA) {
                 "Could not find spacy installation.",
                 "Please install spacy following the instruction at",
                 "https://spacy.io/docs/#getting-started",
+                "",
+                "If you have installed spacy in virtual environment please spacify",
+                "the path to python virtualenv to \"which_python\"",
                 sep = "\n"
             )
         )
