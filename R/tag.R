@@ -13,7 +13,7 @@
 #' # 
 #' check_spacy()
 #' # the result has to be "tag() is ready to run" to run the following
-#' txt <- c(text1 = "This is the first sentence.\nHere is the second sentence.", 
+#' txt <- c(text1 = "This is the first sentence. \nHere is the second sentence.", 
 #'          text2 = "This is the second document.")
 #' tag(txt)
 #' tag(txt, tagset = "penn")
@@ -64,12 +64,11 @@ tag.character <- function(x, tagset = c("google", "penn"), ...) {
                           args = c(PYTHON_SCRIPT, "-w", ifelse(tagset=="penn", "-p", "")),
                           input = x, stdout = TRUE),
                      collapse = "\n")
-    
     # split back into documents
     if (tagset == "google") {
         ret <- unlist(strsplit(ret, "\nPUNCT__###_\n", fixed = TRUE))
     } else if (tagset == "penn") {
-        ret <- unlist(strsplit(ret, "\n.__###_\n", fixed = TRUE))
+        ret <- unlist(strsplit(ret, "\n:__###_\n", fixed = TRUE))
     }
     
     # add back docnames

@@ -26,5 +26,12 @@ This function has to be executed before running \code{tag()}.
   working at a command line (e.g. bash in the Terminal), when called from R 
   it may still look for \code{usr/bin/python}. This function finds the python
   executable with spaCy and set the path to it.
+  
+  If you installed spaCy in a virtual environment, you need to specify the 
+  path to the virtual environment python in the \code{which_python} argument. 
+  To check the path to the python in a virtual environment, 
+  1) activate virtual environment, 
+  2) type "which python"
+  3) copy and paste the output in R (e.g. \code{check_spacy(which_python = "/path_to_virtual/python")})
 }
 
