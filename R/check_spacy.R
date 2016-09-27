@@ -22,6 +22,7 @@
 #'   executable with spaCy and set the path to it.
 #' @author Akitaka Matsuo
 check_spacy <- function(which_python = NA) {
+  
   all_python <- NULL
   
   if (is.na(which_python)) {
@@ -82,4 +83,24 @@ check_spacy <- function(which_python = NA) {
   } else {
     cat("tag() is ready to run\n")
   }
+}
+
+#' Checking the availability of spacy via Rcpp extension
+#' 
+#' Checking the availablity of spaCy in the python on the system, as well as the
+#' availability of spaCy model for English. This function has to be executed
+#' before running \code{tag()}.
+#'   
+#' @return NULL
+#' @export
+#' 
+#' @author Tom Paskhalis
+check_spacy_c <- function() {
+  # import_error <- paste("Could not find spacy installation.",
+  #                       "Please install spacy following the instruction at",
+  #                       "https://spacy.io/docs/#getting-started", sep = "\n")
+  # tryCatch(run_python("import spacy"),
+  #          error = function(e) import_error)
+  pycall("import spacy.en")
+  # pycall("nlp = spacy.en.English()")
 }

@@ -16,7 +16,9 @@ Depends:
     R (>= 3.3.0)
 Imports:
     quanteda (>= 0.9.8),
-    data.table
+    data.table,
+    Rcpp
+LinkingTo: Rcpp
 URL: http://github.com/kbenoit/spacyr
 Encoding: UTF-8
 BugReports: https://github.com/kbenoit/spacyr/issues
