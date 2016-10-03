@@ -5,6 +5,50 @@
 
 using namespace Rcpp;
 
+// numvec_to_R
+NumericVector numvec_to_R(std::string name);
+RcppExport SEXP spacyr_numvec_to_R(SEXP nameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type name(nameSEXP);
+    rcpp_result_gen = Rcpp::wrap(numvec_to_R(name));
+    return rcpp_result_gen;
+END_RCPP
+}
+// charvec_to_R
+std::vector<std::string> charvec_to_R(std::string name);
+RcppExport SEXP spacyr_charvec_to_R(SEXP nameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type name(nameSEXP);
+    rcpp_result_gen = Rcpp::wrap(charvec_to_R(name));
+    return rcpp_result_gen;
+END_RCPP
+}
+// char_to_R
+std::string char_to_R(std::string name);
+RcppExport SEXP spacyr_char_to_R(SEXP nameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type name(nameSEXP);
+    rcpp_result_gen = Rcpp::wrap(char_to_R(name));
+    return rcpp_result_gen;
+END_RCPP
+}
+// num_to_R
+double num_to_R(std::string name);
+RcppExport SEXP spacyr_num_to_R(SEXP nameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type name(nameSEXP);
+    rcpp_result_gen = Rcpp::wrap(num_to_R(name));
+    return rcpp_result_gen;
+END_RCPP
+}
 // initialize_python
 void initialize_python();
 RcppExport SEXP spacyr_initialize_python() {
@@ -23,13 +67,59 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
-// pycall
-void pycall(std::string command);
-RcppExport SEXP spacyr_pycall(SEXP commandSEXP) {
+// pyrun
+void pyrun(std::string command);
+RcppExport SEXP spacyr_pyrun(SEXP commandSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type command(commandSEXP);
-    pycall(command);
+    pyrun(command);
+    return R_NilValue;
+END_RCPP
+}
+// numvec_to_python
+void numvec_to_python(NumericVector x, std::string name);
+RcppExport SEXP spacyr_numvec_to_python(SEXP xSEXP, SEXP nameSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::string >::type name(nameSEXP);
+    numvec_to_python(x, name);
+    return R_NilValue;
+END_RCPP
+}
+// charvec_to_python
+void charvec_to_python(std::vector< std::string > strings, std::string name);
+RcppExport SEXP spacyr_charvec_to_python(SEXP stringsSEXP, SEXP nameSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector< std::string > >::type strings(stringsSEXP);
+    Rcpp::traits::input_parameter< std::string >::type name(nameSEXP);
+    charvec_to_python(strings, name);
+    return R_NilValue;
+END_RCPP
+}
+// num_to_dict
+void num_to_dict(NumericVector x, std::string name, std::string dictname);
+RcppExport SEXP spacyr_num_to_dict(SEXP xSEXP, SEXP nameSEXP, SEXP dictnameSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::string >::type name(nameSEXP);
+    Rcpp::traits::input_parameter< std::string >::type dictname(dictnameSEXP);
+    num_to_dict(x, name, dictname);
+    return R_NilValue;
+END_RCPP
+}
+// char_to_dict
+void char_to_dict(std::vector<std::string> x, std::string name, std::string dictname);
+RcppExport SEXP spacyr_char_to_dict(SEXP xSEXP, SEXP nameSEXP, SEXP dictnameSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::string >::type name(nameSEXP);
+    Rcpp::traits::input_parameter< std::string >::type dictname(dictnameSEXP);
+    char_to_dict(x, name, dictname);
     return R_NilValue;
 END_RCPP
 }

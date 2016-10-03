@@ -101,6 +101,14 @@ check_spacy_c <- function() {
   #                       "https://spacy.io/docs/#getting-started", sep = "\n")
   # tryCatch(run_python("import spacy"),
   #          error = function(e) import_error)
-  pycall("import spacy.en")
-  # pycall("nlp = spacy.en.English()")
+  
+  # txt <- "The quick brown fox jumps over the lazy dog."
+  txtpath <- file.path(".", "inst", "extdata", "test.txt")
+  # pyrun("import spacy.en")
+  # pyrun("nlp = spacy.en.English()")
+  pyrun(sprintf("f = open('%s')", txtpath))
+  pyrun("txt = f.readlines()")
+  tp <- capture.output(pyrun("print(type(txt).__name__)"))
+  print(tp)
+  # print(txt)
 }
