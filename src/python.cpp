@@ -1,5 +1,6 @@
 #include <Rcpp.h>
 #include <Python.h>
+#include "redirect.hpp"
 #include "converters.hpp"
 
 #include <dlfcn.h>
@@ -15,6 +16,14 @@ void initialize_python() {
   Py_Initialize();
   PyObject *m = PyImport_AddModule("__main__");
   PyObject *main = PyModule_GetDict(m);
+  PyObject *f = PyCFunction_New(redirect_pystdout, (PyObject*)NULL);
+  PyObject *f2 = PyCFunction_New(redirect_pystderr, (PyObject*)NULL);
+  PyDict_SetItemString(main, "_Rcout",  f);
+  PyDict_SetItemString(main, "_Rcerr",  f2);
+  pyrun("class _StdoutCatcher:\n  def write(self, out):\n    _Rcout(out)");
+  pyrun("class _StderrCatcher:\n  def write(self, out):\n    _Rcerr(out)");
+  pyrun("import sys\nsys.stdout = _StdoutCatcher()");
+  pyrun("import sys\nsys.stderr = _StderrCatcher()");
   
   //Workaround for the problem with lib-dynload/*.so, as documented here: 
   //https://mail.python.org/pipermail/new-bugs-announce/2008-November/003322.html
@@ -46,7 +55,7 @@ void numvec_to_python(NumericVector x, std::string name){
 }
 
 //[[Rcpp::export(name="topy.character")]]
-void charvec_to_python(std::vector< std::string > strings, std::string name){
+void charvec_to_python(std::vector<std::string> strings, std::string name){
   to_main(name, to_list(strings));
 }
 
