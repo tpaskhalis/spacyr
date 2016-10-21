@@ -8,8 +8,12 @@ S3method(print,tokenizedTexts_tagged)
 S3method(summary,tokenizedTexts_tagged)
 S3method(tag,character)
 S3method(tag,corpus)
+<<<<<<< HEAD
 export(check_spacy)
 export(check_spacy_c)
+=======
+export(initialize_spacy)
+>>>>>>> 471a8eb00a1b0134d5fa81ba32167c704cbb406c
 export(tag)
 importFrom(Rcpp,sourceCpp)
 importFrom(data.table,rbindlist)

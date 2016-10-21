@@ -90,20 +90,19 @@ print.tokenizedTexts_tagged <- function(x, sep = "_", ...) {
 #' summarize a tagged tokenizedTexts object
 #' 
 #' Generate frequency counts of POS by document, returning a data.frame.
-#' 
 #' @param object tokenizedTexts_tagged object to be summarized
 #' @param ... unused
 #' @importFrom data.table rbindlist
 #' @export
 #' @method summary tokenizedTexts_tagged
 #' @examples
-#' options(PYTHON_PATH = "/usr/local/bin")
+#' \donttest{initialize_spacy()
 #' txt <- c(text1 = "This is the first sentence.\nHere is the second sentence.", 
 #'          text2 = "This is the second document.")
 #' taggedtoks <- tag(txt)
 #' taggedtoks
 #' summary(taggedtoks)
-#' summary(tag(txt, tagset = "penn"))
+#' summary(tag(txt, tagset = "penn"))}
 summary.tokenizedTexts_tagged <- function(object, ...) {
     result <- data.frame(
         data.table::rbindlist(lapply(object[["tags"]], function(doc) as.list(table(doc))), 
