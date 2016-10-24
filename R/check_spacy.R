@@ -21,32 +21,7 @@
 #'   executable with spaCy and set the path to it.
 #' @importFrom quanteda docnames
 #' @author Akitaka Matsuo
-<<<<<<< HEAD
-check_spacy <- function(which_python = NA) {
-  
-  all_python <- NULL
-  
-  if (is.na(which_python)) {
-    tryCatch({all_python <- system2(c("which", "-a", "python"), stdout = T)}, 
-             warning = function(e) {
-               if (is.atomic(all_python)) {
-                 stop("No python found in the sysetm")
-               }
-             })
-  } else {
-    all_python <- which_python
-  }
-  all_python <- unique(all_python)
-  spacy_found <- rep(NA, length(all_python))
-  for (i in 1:length(all_python)){
-    python_full <- all_python[i]
-    suppressWarnings({msg <- paste0(system2(python_full, 
-                                            args = c("-c", "'import spacy'"), 
-                                            stdout = TRUE,
-                                            stderr = TRUE), collapse = '\n')})
-    if (grepl("ImportError:", msg)[1]) {
-      spacy_found[i] <- FALSE
-=======
+
 initialize_spacy <- function(which_python = NA) {
     all_python <- NULL
     
@@ -108,7 +83,6 @@ initialize_spacy <- function(which_python = NA) {
         err_msg <- sub(".+(RuntimeError.+)", "\\1", ret)
         options("PYTHON_PATH" = NULL) # delete the option so that tag() will not run
         stop(err_msg)
->>>>>>> 471a8eb00a1b0134d5fa81ba32167c704cbb406c
     } else {
         cat("tag() is ready to run\n")
     }

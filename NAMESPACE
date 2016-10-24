@@ -8,12 +8,14 @@ S3method(print,tokenizedTexts_tagged)
 S3method(summary,tokenizedTexts_tagged)
 S3method(tag,character)
 S3method(tag,corpus)
-<<<<<<< HEAD
-export(check_spacy)
+export(Rvar)
 export(check_spacy_c)
-=======
 export(initialize_spacy)
->>>>>>> 471a8eb00a1b0134d5fa81ba32167c704cbb406c
+export(numvec_to_R)
+export(pydict)
+export(pyprint)
+export(pytype)
+export(pyvar)
 export(tag)
 importFrom(Rcpp,sourceCpp)
 importFrom(data.table,rbindlist)

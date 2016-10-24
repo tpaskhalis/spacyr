@@ -18,7 +18,6 @@ Depends:
     data.table,
     Rcpp
 LinkingTo: Rcpp
-=======
 Imports:
     data.table,
     rmarkdown,

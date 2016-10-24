@@ -12,6 +12,11 @@
 using namespace Rcpp;
 
 //[[Rcpp::export]]
+void pyrun(std::string command) {
+  PyRun_SimpleString(command.c_str());
+}
+
+//[[Rcpp::export]]
 void initialize_python() {
   Py_Initialize();
   PyObject *m = PyImport_AddModule("__main__");
@@ -33,11 +38,6 @@ void initialize_python() {
 //[[Rcpp::export]]
 void finalize_python() {
   Py_Finalize();
-}
-
-//[[Rcpp::export]]
-void pyrun(std::string command) {
-  PyRun_SimpleString(command.c_str());
 }
 
 //' Push data to python __main__ namespace

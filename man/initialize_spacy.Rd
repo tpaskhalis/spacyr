@@ -12,17 +12,11 @@ spacy. If you do not specify, this fuction looks for all python intallation
 on the computer}
 }
 \description{
-<<<<<<< HEAD:man/check_spacy.Rd
-Checking the availablity of spaCy in the python on the system, as well as the
-availability of spaCy model for English. This function has to be executed
-before running \code{tag()}.
-=======
 Check the availablity of spaCy on the user's system, as well as the 
 availability of spaCy model for English. This function has to be executed 
 before running \code{tag()}.  This function not only checks the availability,
 but also sets options to the path where spaCy is installed, in case the user
 has more than one version of Python installed, or is using a virtualenv.
->>>>>>> 471a8eb00a1b0134d5fa81ba32167c704cbb406c:man/initialize_spacy.Rd
 }
 \section{Setting the path to the python executable}{
  Note that on some 

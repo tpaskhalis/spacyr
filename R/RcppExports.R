@@ -33,16 +33,16 @@ num_to_R <- function(name) {
     .Call('spacyr_num_to_R', PACKAGE = 'spacyr', name)
 }
 
+pyrun <- function(command) {
+    invisible(.Call('spacyr_pyrun', PACKAGE = 'spacyr', command))
+}
+
 initialize_python <- function() {
     invisible(.Call('spacyr_initialize_python', PACKAGE = 'spacyr'))
 }
 
 finalize_python <- function() {
     invisible(.Call('spacyr_finalize_python', PACKAGE = 'spacyr'))
-}
-
-pyrun <- function(command) {
-    invisible(.Call('spacyr_pyrun', PACKAGE = 'spacyr', command))
 }
 
 #' Push data to python __main__ namespace
