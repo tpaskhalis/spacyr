@@ -21,6 +21,9 @@ numvec_to_R <- function(name) {
 #'charvec_to_R("l")
 #'pyrun("l2 = [u'a', u'b']")
 #'charvec_to_R("l2")
+#' @param name Python variable name
+#' 
+#' @export
 charvec_to_R <- function(name) {
     .Call('spacyr_charvec_to_R', PACKAGE = 'spacyr', name)
 }
@@ -33,6 +36,14 @@ num_to_R <- function(name) {
     .Call('spacyr_num_to_R', PACKAGE = 'spacyr', name)
 }
 
+#' Run python code
+#'
+#' Runs Python code in namespace __main__ . 
+#' 
+#' @param command Python code to execute as string
+#' @examples
+#' pyrun("print(range(5))")
+#' @export
 pyrun <- function(command) {
     invisible(.Call('spacyr_pyrun', PACKAGE = 'spacyr', command))
 }
@@ -49,11 +60,6 @@ finalize_python <- function() {
 #' 
 #' @param name Python variable name as string
 #' @param x Numeric vector to copy to Python
-#' 
-#' @examples
-#' numvec_to_python("l", 1:10)
-#' pyrun("print l")
-#' 
 topy.numeric <- function(x, name) {
     invisible(.Call('spacyr_numvec_to_python', PACKAGE = 'spacyr', x, name))
 }

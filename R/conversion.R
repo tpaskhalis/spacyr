@@ -8,8 +8,6 @@
 #' pyprint(x)
 #' pyvar("s", c("Hello", "R!")) 
 #' pyprint(s)
-#' pyvar(volcano) #Matrix
-#' pyprint(volcano)
 #' df <- data.frame(x = rnorm(10), y = 1:10)
 #' pyvar(df)
 #' pyprint(df)
@@ -115,6 +113,7 @@ pyprint <- function(x)
 #' pyvar("x", 1:10)
 #' pytype(x)
 #' pytype(x[1])
+#' @importFrom utils capture.output
 #' @export
 pytype <- function(var){
   cmd <- substitute(var)
@@ -142,9 +141,6 @@ pytype_str <- function(var){
 #' Rvar("s")
 #' pyrun("s2 = 'a'")
 #' Rvar("s2")
-#' data(whiteside, package="MASS")
-#' pyvar(whiteside)
-#' Rvar(whiteside)
 #' @export
 Rvar <- function(var)
 {

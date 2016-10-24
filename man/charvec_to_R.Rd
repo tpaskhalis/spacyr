@@ -6,6 +6,9 @@
 \usage{
 charvec_to_R(name)
 }
+\arguments{
+\item{name}{Python variable name}
+}
 \description{
 Copy list of strings from Python to R character vector
 }

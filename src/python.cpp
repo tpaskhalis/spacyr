@@ -11,6 +11,14 @@
 
 using namespace Rcpp;
 
+//' Run python code
+//'
+//' Runs Python code in namespace __main__ . 
+//' 
+//' @param command Python code to execute as string
+//' @examples
+//' pyrun("print(range(5))")
+//' @export
 //[[Rcpp::export]]
 void pyrun(std::string command) {
   PyRun_SimpleString(command.c_str());
@@ -44,11 +52,6 @@ void finalize_python() {
 //' 
 //' @param name Python variable name as string
 //' @param x Numeric vector to copy to Python
-//' 
-//' @examples
-//' numvec_to_python("l", 1:10)
-//' pyrun("print l")
-//' 
 //[[Rcpp::export(name="topy.numeric")]]
 void numvec_to_python(NumericVector x, std::string name){
   to_main(name, to_list(x));

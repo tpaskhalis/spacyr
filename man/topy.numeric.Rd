@@ -14,9 +14,4 @@
 \description{
 Push data to python __main__ namespace
 }
-\examples{
-numvec_to_python("l", 1:10)
-pyrun("print l")
-
-}
 

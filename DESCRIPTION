@@ -16,7 +16,8 @@ Depends:
     R (>= 3.3.0),
     quanteda (>= 0.9.8),
     data.table,
-    Rcpp
+    Rcpp,
+    utils
 LinkingTo: Rcpp
 Imports:
     data.table,

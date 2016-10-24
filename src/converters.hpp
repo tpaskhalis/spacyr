@@ -101,6 +101,9 @@ NumericVector numvec_to_R(std::string name){
 //'charvec_to_R("l")
 //'pyrun("l2 = [u'a', u'b']")
 //'charvec_to_R("l2")
+//' @param name Python variable name
+//' 
+//' @export
 //[[Rcpp::export]]
 std::vector<std::string> charvec_to_R(std::string name){
   PyObject *list = from_main(name);
