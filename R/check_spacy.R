@@ -21,7 +21,6 @@
 #'   executable with spaCy and set the path to it.
 #' @importFrom quanteda docnames
 #' @author Akitaka Matsuo
-
 initialize_spacy <- function(which_python = NA) {
     all_python <- NULL
     
