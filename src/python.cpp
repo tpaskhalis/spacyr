@@ -25,7 +25,19 @@ void pyrun(std::string command) {
 }
 
 //[[Rcpp::export]]
-void initialize_python() {
+void py_initialize(const std::string& pythonSharedLibrary) {
+  
+#ifndef __APPLE__
+  // force RTLD_GLOBAL for importing python libraries on Linux
+  // http://stackoverflow.com/questions/29880931/
+  // https://mail.python.org/pipermail/new-bugs-announce/2008-November/003322.html
+  void *lib = dlopen(pythonSharedLibrary.c_str(), RTLD_NOW|RTLD_GLOBAL);
+  if (lib == NULL) {
+    const char* err = dlerror();
+    stop(err);
+  }
+#endif
+  
   Py_Initialize();
   PyObject *m = PyImport_AddModule("__main__");
   PyObject *main = PyModule_GetDict(m);
@@ -37,10 +49,6 @@ void initialize_python() {
   pyrun("class _StderrCatcher:\n  def write(self, out):\n    _Rcerr(out)");
   pyrun("import sys\nsys.stdout = _StdoutCatcher()");
   pyrun("import sys\nsys.stderr = _StderrCatcher()");
-  
-  //Workaround for the problem with lib-dynload/*.so, as documented here: 
-  //https://mail.python.org/pipermail/new-bugs-announce/2008-November/003322.html
-  dlopen("libpython2.7.so", RTLD_LAZY |RTLD_GLOBAL);
 }
 
 //[[Rcpp::export]]

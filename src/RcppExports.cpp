@@ -59,12 +59,13 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
-// initialize_python
-void initialize_python();
-RcppExport SEXP spacyr_initialize_python() {
+// py_initialize
+void py_initialize(const std::string& pythonSharedLibrary);
+RcppExport SEXP spacyr_py_initialize(SEXP pythonSharedLibrarySEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
-    initialize_python();
+    Rcpp::traits::input_parameter< const std::string& >::type pythonSharedLibrary(pythonSharedLibrarySEXP);
+    py_initialize(pythonSharedLibrary);
     return R_NilValue;
 END_RCPP
 }

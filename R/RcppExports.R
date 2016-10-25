@@ -48,8 +48,8 @@ pyrun <- function(command) {
     invisible(.Call('spacyr_pyrun', PACKAGE = 'spacyr', command))
 }
 
-initialize_python <- function() {
-    invisible(.Call('spacyr_initialize_python', PACKAGE = 'spacyr'))
+py_initialize <- function(pythonSharedLibrary) {
+    invisible(.Call('spacyr_py_initialize', PACKAGE = 'spacyr', pythonSharedLibrary))
 }
 
 finalize_python <- function() {
