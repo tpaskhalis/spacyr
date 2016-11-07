@@ -4,3 +4,9 @@
 .Ruserdata
 *.Rproj
 .DS_Store
+src/*.o
+src/*.so
+src/*.dll
+config.log
+config.status
+autom4te.cache
